@@ -45,3 +45,6 @@ Untuk membatasi agar status hanya pada pilihan yang valid, sehingga kesalahan ty
 
 ## Refleksi
 HTML hanya berfokus pada tampilan UI sedangkan JSX menggabungkan UI dengan logika JavaScript seperti conditional rendering, props, dan data dinamis. 
+
+## Refleksi Pertemuan 3
+Conditional rendering berbeda dengan HTML biasa. Di dalam HTML kita menggunakan script javascript, sedangkan dalam  React ada yang bisa diletakkan di dalam JSX ada yang tidak bisa, serperti if-else condition.
