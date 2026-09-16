@@ -2,11 +2,11 @@
 // string }[] }. Render sebuah <ul> berisi satu <li> per item, dengan teks
 // nama item di dalamnya. Tiap <li> WAJIB diberi prop `key` yang unik (pakai
 // item.id, JANGAN pakai index array). Lihat SOAL.md untuk kontrak lengkap.
-type DaftarBelanjaProps = {
+type DaftarBelanja = {
   items: { id: string; nama: string }[];
 };
 
-export function DaftarBelanja({ items }: DaftarBelanjaProps) {
+export function DaftarBelanja({ items }: DaftarBelanja) {
   return (
     <ul>
       {items.map(({ id, nama }) => (
