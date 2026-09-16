@@ -9,7 +9,6 @@
 //   tulis <button> baru dari nol.
 // Lihat SOAL.md untuk kontrak lengkap.
 import type { Tugas } from '../types';
-import { KartuTugas } from './KartuTugas';
 import { Button } from './Button';
 
 type DaftarTugasLengkap = {
@@ -26,10 +25,8 @@ export function DaftarTugasLengkap({ tugas, onHapus }: DaftarTugasLengkap) {
     <ul>
       {tugas.map((task) => (
         <li key={task.id}>
-          <KartuTugas teks={task.teks} selesai={task.selesai} />
-          <Button variant="danger" onClick={() => onHapus(task.id)}>
-            Hapus
-          </Button>
+          <span>{task.teks}</span>
+          <Button variant="danger" onClick={() => onHapus(task.id)}>Hapus</Button>
         </li>
       ))}
     </ul>
