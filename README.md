@@ -48,3 +48,6 @@ HTML hanya berfokus pada tampilan UI sedangkan JSX menggabungkan UI dengan logik
 
 ## Refleksi Pertemuan 3
 Conditional rendering berbeda dengan HTML biasa. Di dalam HTML kita menggunakan script javascript, sedangkan dalam  React ada yang bisa diletakkan di dalam JSX ada yang tidak bisa, serperti if-else condition.
+
+## Refleksi Pertemuan 4
+Perbedaan variabel dengan state adalah ketika valuenya berubah, state akan secara otomatis reload komponennya saja, sedangkan variabel harus reload satu halaman. e.target.value perlu diubah ke number sebelum dihitung karena dari input selalu bertipe string.
