@@ -51,3 +51,10 @@ Conditional rendering berbeda dengan HTML biasa. Di dalam HTML kita menggunakan 
 
 ## Refleksi Pertemuan 4
 Perbedaan variabel dengan state adalah ketika valuenya berubah, state akan secara otomatis reload komponennya saja, sedangkan variabel harus reload satu halaman. e.target.value perlu diubah ke number sebelum dihitung karena dari input selalu bertipe string.
+
+
+## Refleksi Pertemuan 6
+
+Cleanup pada useEffect digunakan untuk menghentikan timer atau melepas event listener yang sudah tidak digunakan. Jika tidak menggunakan cleanup, proses bisa terus berjalan setelah komponen dilepas atau setelah efek dijalankan ulang. Akibatnya, fungsi dapat dijalankan berulang kali dan menyebabkan perilaku aplikasi yang tidak sesuai.
+
+Dalam development, React StrictMode menjalankan efek tambahan untuk membantu menemukan masalah tersebut. Karena efek dijalankan kembali, console.log bisa muncul dua kali. Jika cleanup dilakukan dengan benar, timer atau listener dari proses sebelumnya akan dibersihkan sehingga tidak menumpuk dan aplikasi tetap berjalan dengan baik.
