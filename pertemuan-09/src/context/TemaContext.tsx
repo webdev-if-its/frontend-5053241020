@@ -13,10 +13,7 @@ import type { Tema } from '../types'
 
 type TemaContextType = { tema: Tema; gantiTema: () => void }
 
-const TemaContext = createContext<TemaContextType>({
-  tema: "terang",
-  gantiTema: () => {},
-})
+const TemaContext = createContext<TemaContextType | null>(null)
 
 export function TemaProvider({ children }: { children: ReactNode }) {
   const [tema, setTema] = useState<Tema>('terang')
@@ -33,5 +30,9 @@ export function TemaProvider({ children }: { children: ReactNode }) {
 }
 
 export function useTema() {
-  return useContext(TemaContext)
+  const ctx = useContext(TemaContext)
+  if (!ctx) {
+    throw new Error('useTema harus dipakai di dalam <TemaProvider>')
+  }
+  return ctx
 }
