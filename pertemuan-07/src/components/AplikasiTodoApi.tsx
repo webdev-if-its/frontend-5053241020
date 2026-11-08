@@ -12,7 +12,7 @@
 // Lihat SOAL.md untuk kontrak lengkap.
 import { useEffect, useState } from "react"
 import type { FormEvent } from "react"
-import { getTodos, addTodo } from "../api/todos"
+import { getTodos, addTodo, updateTodo, hapusTodo } from "../api/todos"
 import type { Todo } from "../types"
 
 export function AplikasiTodoApi() {
@@ -30,6 +30,20 @@ export function AplikasiTodoApi() {
     const newTodo = await addTodo(judul)
     setTodos((prev) => [...prev, newTodo])
     setJudul("")
+  }
+
+  const handleToggleTodo = async (id: number) => {
+    const todo = todos.find((t) => t.id === id)
+    if (!todo) return
+    const updatedTodo = await updateTodo(id, !todo.completed)
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? updatedTodo : t))
+    )
+  }
+
+  const handleDeleteTodo = async (id: number) => {
+    await hapusTodo(id)
+    setTodos((prev) => prev.filter((t) => t.id !== id))
   }
 
   return (
@@ -52,9 +66,11 @@ export function AplikasiTodoApi() {
               <input
                 type="checkbox"
                 checked={t.completed}
+                onChange={() => handleToggleTodo(t.id)}
               />
               {t.title}
             </label>
+            <button onClick={() => handleDeleteTodo(t.id)}>Hapus</button>
           </li>
         ))}
       </ul>
