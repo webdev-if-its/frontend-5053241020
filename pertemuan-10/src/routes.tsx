@@ -22,6 +22,7 @@ import { DetailProduk } from './pages/DetailProduk'
 import { DashboardLayout } from './components/DashboardLayout'
 import { Ringkasan } from './pages/Ringkasan'
 import { DaftarPengguna } from './pages/DaftarPengguna'
+import { DetailPengguna } from './pages/DetailPengguna'
 import type { RouteObject } from 'react-router-dom'
 
 export const routes: RouteObject[] = [
@@ -37,5 +38,6 @@ export const dashboardRoute: RouteObject = {
   children: [
     { index: true, element: <Ringkasan /> },
     { path: "pengguna", element: <DaftarPengguna /> },
+    { path: "pengguna/:id", element: <DetailPengguna /> },
   ],
 }

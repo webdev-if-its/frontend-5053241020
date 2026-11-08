@@ -3,6 +3,7 @@
 // tiap <li> memuat <Link> bertuliskan nama pengguna yang menuju
 // "/dashboard/pengguna/{id}" (Level 8).
 import { daftarPengguna } from '../data'
+import { Link } from 'react-router-dom'
 
 export function DaftarPengguna() {
   return (
@@ -10,7 +11,9 @@ export function DaftarPengguna() {
       <h2>Daftar Pengguna</h2>
       <ul>
         {daftarPengguna.map((p) => (
-          <li key={p.id}>{p.nama}</li>
+          <li key={p.id}>
+            <Link to={`/dashboard/pengguna/${p.id}`}>{p.nama}</Link>
+          </li>
         ))}
       </ul>
     </div>
