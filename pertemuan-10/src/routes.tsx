@@ -23,14 +23,21 @@ import { DashboardLayout } from './components/DashboardLayout'
 import { Ringkasan } from './pages/Ringkasan'
 import { DaftarPengguna } from './pages/DaftarPengguna'
 import { DetailPengguna } from './pages/DetailPengguna'
+import RootLayout from "./components/RootLayout"
+import ErrorPage from "./components/ErrorPage"
 import type { RouteObject } from 'react-router-dom'
 
-export const routes: RouteObject[] = [
-  { path: "/", element: <Beranda /> },
-  { path: "/tentang", element: <Tentang /> },
-  { path: "/produk", element: <DaftarProduk /> },
-  { path: "/produk/:id", element: <DetailProduk /> },
-]
+export const routes: RouteObject[] = [{
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Beranda /> },
+      { path: "tentang", element: <Tentang /> },
+      { path: "produk", element: <DaftarProduk /> },
+      { path: "produk/:id", element: <DetailProduk /> },
+    ],
+}]
 
 export const dashboardRoute: RouteObject = {
   path: "/dashboard",
