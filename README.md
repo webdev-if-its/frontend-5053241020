@@ -70,3 +70,9 @@ fetch tidak otomatis melempar error untuk respons 404/500 karena dari sisi fetch
 Context dipakai jika data yang sama dibutuhkan di banyak level komponen yang berbeda-beda, sehingga tidak perlu mengoper props lewat props drilling. Jika data hanya dipakai di satu atau dua level komponen, props biasa sudah cukup dan lebih mudah dilacak.
 
 Dua komponen yang sama-sama memanggil useFetch tidak berbagi data karena custom hook hanya berbagi logika, bukan state. Setiap pemanggilan menjalankan useState dan useEffect sendiri, sehingga masing-masing punya data sendiri dan fetch dilakukan sendiri-sendiri.
+
+## Refleksi Pertemuan 11
+
+`<Navigate />` adalah komponen yang dirender untuk berpindah halaman, sedangkan `useNavigate()` mengembalikan fungsi yang dipanggil di event handler.
+
+Protected route di frontend saja tidak cukup karena kode dan data di sisi klien bisa dilihat dan dimanipulasi siapa saja. Pengamanan juga harus ada di server.
