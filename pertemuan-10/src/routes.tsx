@@ -25,19 +25,9 @@ import { DaftarPengguna } from './pages/DaftarPengguna'
 import { DetailPengguna } from './pages/DetailPengguna'
 import RootLayout from "./components/RootLayout"
 import ErrorPage from "./components/ErrorPage"
+import ProtectedRoute from "./components/ProtectedRoute"
+import HalamanLogin from "./pages/HalamanLogin"
 import type { RouteObject } from 'react-router-dom'
-
-export const routes: RouteObject[] = [{
-    path: "/",
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <Beranda /> },
-      { path: "tentang", element: <Tentang /> },
-      { path: "produk", element: <DaftarProduk /> },
-      { path: "produk/:id", element: <DetailProduk /> },
-    ],
-}]
 
 export const dashboardRoute: RouteObject = {
   path: "/dashboard",
@@ -48,3 +38,17 @@ export const dashboardRoute: RouteObject = {
     { path: "pengguna/:id", element: <DetailPengguna /> },
   ],
 }
+
+export const routes: RouteObject[] = [{
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Beranda /> },
+      { path: "tentang", element: <Tentang /> },
+      { path: "produk", element: <DaftarProduk /> },
+      { path: "produk/:id", element: <DetailProduk /> },
+      { path: "login", element: <HalamanLogin /> },
+      { element: <ProtectedRoute />, children: [dashboardRoute] },
+    ],
+}]

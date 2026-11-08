@@ -7,10 +7,34 @@
 //   { user, login, logout } dan MELEMPAR Error yang pesannya menyebut
 //   "AuthProvider" kalau dipakai di luar AuthProvider.
 // Lihat SOAL.md untuk tanda tangan tipe lengkapnya.
-export function AuthProvider(props: any) {
-  return <>{props.children}</>
+import { createContext, useContext, useState } from 'react'
+import type { ReactNode } from 'react'
+
+type AuthContextType = {
+  user: string | null
+  login: (nama: string) => void
+  logout: () => void
 }
 
-export function useAuth(): any {
-  throw new Error('TODO')
+const AuthContext = createContext<AuthContextType | null>(null)
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<string | null>(null)
+
+  const login = (nama: string) => setUser(nama)
+  const logout = () => setUser(null)
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext)
+  if (!ctx) {
+    throw new Error("useAuth harus dipakai di dalam <AuthProvider>")
+  }
+  return ctx
 }
