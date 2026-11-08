@@ -8,6 +8,21 @@
 // berubah, ambil ulang (state di-reset dulu). Kalau res.ok false, isi error
 // dengan pesan yang memuat kata "gagal"; kalau fetch ditolak, isi error
 // dengan err.message. Lihat SOAL.md untuk tanda tangan lengkapnya.
-export function useFetch(url: any): any {
-  return { data: null, loading: true, error: null }
+import { useState, useEffect } from 'react'
+
+export function useFetch<T>(url: string) {
+  const [data, setData] = useState<T | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((json: T) => {
+        setData(json)
+        setLoading(false)
+      })
+  }, [])
+
+  return { data, loading, error}
 }
