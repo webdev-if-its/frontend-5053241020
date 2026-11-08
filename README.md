@@ -64,3 +64,9 @@ Dalam development, React StrictMode menjalankan efek tambahan untuk membantu men
 Keuntungan memisahkan fungsi API dari komponen adalah jika format request berubah, hanya perlu edit fungsi API saja, selain itu fungsi yang sama juga bisa dipakai ulang di banyak komponen.
 
 fetch tidak otomatis melempar error untuk respons 404/500 karena dari sisi fetch, server tetap membalas sehingga permintaan dianggap berhasil. Promise hanya ditolak kalau permintaan gagal total. Karena itu status error HTTP harus dicek manual lewat res.ok lalu dilempar sendiri dengan throw.
+
+## Refleksi Pertemuan 10
+
+Context dipakai jika data yang sama dibutuhkan di banyak level komponen yang berbeda-beda, sehingga tidak perlu mengoper props lewat props drilling. Jika data hanya dipakai di satu atau dua level komponen, props biasa sudah cukup dan lebih mudah dilacak.
+
+Dua komponen yang sama-sama memanggil useFetch tidak berbagi data karena custom hook hanya berbagi logika, bukan state. Setiap pemanggilan menjalankan useState dan useEffect sendiri, sehingga masing-masing punya data sendiri dan fetch dilakukan sendiri-sendiri.
