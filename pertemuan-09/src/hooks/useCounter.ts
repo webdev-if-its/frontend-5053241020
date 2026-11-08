@@ -12,7 +12,7 @@ export function useCounter(initial: number = 0) {
 
   const increment = () => setCount((prev) => prev + 1)
   const decrement = () => setCount((prev) => prev - 1)
-  const reset = () => setCount(0)
+  const reset = () => setCount(initial)
 
   return { count, increment, decrement, reset }
 }
