@@ -17,9 +17,19 @@ export function useFetch<T>(url: string) {
 
   useEffect(() => {
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Gagal mengambil data dari ${url}`)
+        }
+        return res.json()
+      })
       .then((json: T) => {
         setData(json)
+      })
+      .catch((err) => {
+        setError(err.message)
+      })
+      .finally(() => {
         setLoading(false)
       })
   }, [])
