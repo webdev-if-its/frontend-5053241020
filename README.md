@@ -58,3 +58,9 @@ Perbedaan variabel dengan state adalah ketika valuenya berubah, state akan secar
 Cleanup pada useEffect digunakan untuk menghentikan timer atau melepas event listener yang sudah tidak digunakan. Jika tidak menggunakan cleanup, proses bisa terus berjalan setelah komponen dilepas atau setelah efek dijalankan ulang. Akibatnya, fungsi dapat dijalankan berulang kali dan menyebabkan perilaku aplikasi yang tidak sesuai.
 
 Dalam development, React StrictMode menjalankan efek tambahan untuk membantu menemukan masalah tersebut. Karena efek dijalankan kembali, console.log bisa muncul dua kali. Jika cleanup dilakukan dengan benar, timer atau listener dari proses sebelumnya akan dibersihkan sehingga tidak menumpuk dan aplikasi tetap berjalan dengan baik.
+
+## Refleksi Pertemuan 9
+
+Keuntungan memisahkan fungsi API dari komponen adalah jika format request berubah, hanya perlu edit fungsi API saja, selain itu fungsi yang sama juga bisa dipakai ulang di banyak komponen.
+
+fetch tidak otomatis melempar error untuk respons 404/500 karena dari sisi fetch, server tetap membalas sehingga permintaan dianggap berhasil. Promise hanya ditolak kalau permintaan gagal total. Karena itu status error HTTP harus dicek manual lewat res.ok lalu dilempar sendiri dengan throw.
