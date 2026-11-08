@@ -42,6 +42,9 @@ export async function updateTodo(id: number, completed: boolean): Promise<Todo> 
 }
 
 // Level 5
-export async function hapusTodo(id: any): Promise<any> {
-  throw new Error('TODO')
+export async function hapusTodo(id: number): Promise<void> {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE'
+  })
+  if (!res.ok) throw new Error("Gagal menghapus todo");
 }
